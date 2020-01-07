@@ -1,3 +1,4 @@
+
 import java.awt.image.BufferedImage;
 public class Texture
 {
@@ -7,7 +8,7 @@ public class Texture
    TextureSheet bsheet;
    TextureSheet psheet;
    public BufferedImage[]player = new BufferedImage[20];
-   public BufferedImage[]platform  = new BufferedImage[2];
+   public BufferedImage[]platform  = new BufferedImage[10];
    
     public Texture()
     {
@@ -26,6 +27,8 @@ public class Texture
     
     private void getTexture(){
         for(int i=0;i<20;i++){
+        	if(i<10)
+        		platform[i] = psheet.grabImage(i+1,1,32,32); 
             if(i<7){
                 player[i] = bsheet.grabImage(i+1,1,45,45);
             }
@@ -35,8 +38,12 @@ public class Texture
             else
                 player[i] = bsheet.grabImage(i-13,3,45,45);
             }
-        platform[0] = psheet.grabImage(1,1,32,32);  
-        platform[1] = psheet.grabImage(2,1,32,32);  
+        
+        
+    
+    for(int i=0;i<10;i++){
+    	
+    		platform[i] = psheet.grabImage(i+1,1,32,32);
     }
-
+    }
 }

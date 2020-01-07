@@ -19,7 +19,6 @@ public class Block extends GameObject {
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.white);
         g.drawImage(tex.platform[0],(int) x, (int) y,null);
     }
 

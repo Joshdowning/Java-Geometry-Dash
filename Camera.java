@@ -7,14 +7,14 @@ public class Camera {
     public Camera(float x, float y) {
         this.x = x;
         this.y = y;
-        acceleration = 2;
+        acceleration = 4;
     }
 
     public void tick() {
         x -= acceleration;
         acceleration += 0.002;
-        if (acceleration > 4) {
-            acceleration = 4;
+        if (acceleration > 5) {
+            acceleration = 5;
         }
     }
 

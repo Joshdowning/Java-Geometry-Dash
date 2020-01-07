@@ -122,7 +122,7 @@ public class Game extends Canvas implements Runnable {
             bufstrat.show();
             camera.setX(0);
             camera.setY(0);
-            camera.setAccel(3);
+            camera.setAccel(4);
             
         }
         
@@ -165,6 +165,13 @@ public class Game extends Canvas implements Runnable {
                     int yy[] = {(j*32)+32,(j*32),(j*32)+32};
                     handler.addObj(new Spike(xx,yy,i*32,j*32,ObjId.Spike));
                 }
+                if (red == 0 && green == 255 && blue == 0) { //detect green pixel
+                    handler.addObj(new JumpPad(i * 32, j * 32, ObjId.JumpPad));
+                }
+                
+                if (red == 255 && green == 0 && blue == 255) { //detect purple pixel
+                    handler.addObj(new FallPad(i * 32, j * 32, ObjId.FallPad));
+                }
             }
         }
     
@@ -175,7 +182,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public static void main(String args[]) {
-        new Window(1000, 800, "Cube Runner", new Game());
+        new Window(980, 788, "Cube Runner", new Game());
     }
 
 }

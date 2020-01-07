@@ -4,5 +4,7 @@ public enum ObjId
     Player,
     Block,
     Wall,
-    Spike;
+    Spike,
+    JumpPad,
+    FallPad;
 }
