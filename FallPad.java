@@ -24,7 +24,7 @@ public class FallPad extends GameObject
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, 32, 5);
+        return new Rectangle((int) x, (int) y, 35, 10);
     }
 
 }

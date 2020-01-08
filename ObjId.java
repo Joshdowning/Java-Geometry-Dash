@@ -5,6 +5,9 @@ public enum ObjId
     Block,
     Wall,
     Spike,
+    FlipSpike,
     JumpPad,
-    FallPad;
+    FallPad,
+    GravityPortalUp,
+    GravityPortalDown;
 }

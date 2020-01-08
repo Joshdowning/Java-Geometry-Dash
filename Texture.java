@@ -8,7 +8,7 @@ public class Texture
    TextureSheet bsheet;
    TextureSheet psheet;
    public BufferedImage[]player = new BufferedImage[20];
-   public BufferedImage[]platform  = new BufferedImage[10];
+   public BufferedImage[]platform  = new BufferedImage[12];
    
     public Texture()
     {
@@ -27,23 +27,24 @@ public class Texture
     
     private void getTexture(){
         for(int i=0;i<20;i++){
-        	if(i<10)
-        		platform[i] = psheet.grabImage(i+1,1,32,32); 
+        	
             if(i<7){
+            	platform[i] = psheet.grabImage(i+1,1,32,32);
                 player[i] = bsheet.grabImage(i+1,1,45,45);
             }
-            else if(i>=7 &&i<14){
+            else if(i>=7 &&i<10){
+            	platform[i] = psheet.grabImage(i+1,1,32,32);
                 player[i] = bsheet.grabImage(i-6,2,45,45);
             }
+            else if(i>=10 && i<14)
+            	player[i] = bsheet.grabImage(i-6,2,45,45);
             else
                 player[i] = bsheet.grabImage(i-13,3,45,45);
-            }
-        
+        }
+        platform[10] = psheet.grabImage(1,2,32,96);
+        platform[11]= psheet.grabImage(1, 2, 32, 32);
         
     
-    for(int i=0;i<10;i++){
-    	
-    		platform[i] = psheet.grabImage(i+1,1,32,32);
-    }
+   
     }
 }

@@ -14,9 +14,13 @@ public class KeyInput extends KeyAdapter {
 
         for (GameObject entity: handler.getObj()) {
             if (entity.getId() == ObjId.Player) {
-                if (key == KeyEvent.VK_W && !entity.isRising()) {
+                if (key == KeyEvent.VK_W && !entity.isRising() && !entity.isGravityUp()) {
                     entity.setRising(true);
                     entity.setVelocityY( - 10);    
+                }
+                if (key == KeyEvent.VK_W && !entity.isRising() && entity.isGravityUp()) {
+                    entity.setRising(true);
+                    entity.setVelocityY(10);    
                 }
             }
         }

@@ -1,7 +1,6 @@
 import java.util.LinkedList;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.Color;
 
 public class Block extends GameObject {
     

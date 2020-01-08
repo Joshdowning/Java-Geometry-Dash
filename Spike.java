@@ -1,10 +1,8 @@
 import java.util.LinkedList;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.geom.Area;
-import java.awt.image.BufferedImage;
+
 
 
 public class Spike extends GameObject{

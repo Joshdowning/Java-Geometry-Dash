@@ -23,7 +23,7 @@ public class JumpPad extends GameObject
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, 32, 2);
+        return new Rectangle((int) x, (int) y, 32, 3);
     }
 
 }

@@ -37,6 +37,10 @@ public abstract class GameObject {
     public boolean getJumped(){
         return true;
     }
+    public boolean isGravityUp(){
+        return true;
+    }
+    
     public void setJumped(boolean jumped){
         
     }
