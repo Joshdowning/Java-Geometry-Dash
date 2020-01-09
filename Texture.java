@@ -2,13 +2,13 @@
 import java.awt.image.BufferedImage;
 public class Texture
 {
+   public BufferedImage[]player = new BufferedImage[23];
+   public BufferedImage[]platform  = new BufferedImage[13];
    private BufferedImage blocks_sheet=null;
    private BufferedImage platforms_sheet=null;
+   private TextureSheet bsheet;
+   private TextureSheet psheet;
    
-   TextureSheet bsheet;
-   TextureSheet psheet;
-   public BufferedImage[]player = new BufferedImage[20];
-   public BufferedImage[]platform  = new BufferedImage[12];
    
     public Texture()
     {
@@ -26,7 +26,7 @@ public class Texture
     }
     
     private void getTexture(){
-        for(int i=0;i<20;i++){
+        for(int i=0;i<23;i++){
         	
             if(i<7){
             	platform[i] = psheet.grabImage(i+1,1,32,32);
@@ -38,13 +38,13 @@ public class Texture
             }
             else if(i>=10 && i<14)
             	player[i] = bsheet.grabImage(i-6,2,45,45);
-            else
+            else if(i>=14 && i<21)
                 player[i] = bsheet.grabImage(i-13,3,45,45);
-        }
+            else
+            	player[i] = bsheet.grabImage(i-20,4,45,45);
+        }        
         platform[10] = psheet.grabImage(1,2,32,96);
-        platform[11]= psheet.grabImage(1, 2, 32, 32);
-        
-    
-   
+        platform[11]= psheet.grabImage(1, 2, 32, 32); 
+        platform[12]=psheet.grabImage(2,2,32,96);
     }
 }

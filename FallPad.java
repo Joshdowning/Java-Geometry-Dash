@@ -7,12 +7,10 @@ public class FallPad extends GameObject
 {
     private Animation flippedSparkle;
     Texture tex = Game.getTextureInstance();
-    
-    
+      
     public FallPad(float x, float y, ObjId id) {
         super(x, y, id);
         flippedSparkle = new Animation(2,tex.platform[6],tex.platform[7],tex.platform[8],tex.platform[9]);
-
     }
 
     public void tick(LinkedList < GameObject > obj) {

@@ -49,8 +49,7 @@ public class Animation
             if(img == imgs[11] ||img == imgs[0]){
                 return false;
             }
-        }
-            
+        }        
         return true;
     }
 
@@ -60,9 +59,5 @@ public class Animation
     
     public void setLastFrame(BufferedImage img){
         currentImage = img;
-    }
-      
-    
-    
-
+    } 
 }

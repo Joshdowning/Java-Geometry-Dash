@@ -2,29 +2,32 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
-    Handler handler;
+   
+	private Handler handler;
     
-
     public KeyInput(Handler handler) {
         this.handler = handler;   
     }
 
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-
         for (GameObject entity: handler.getObj()) {
-            if (entity.getId() == ObjId.Player) {
-                if (key == KeyEvent.VK_W && !entity.isRising() && !entity.isGravityUp()) {
+            if (entity.getId() == ObjId.PLAYER) {
+                if (key == KeyEvent.VK_SPACE && !entity.isRising() && !entity.isGravityUp() && !entity.isSpaceship()) {
                     entity.setRising(true);
                     entity.setVelocityY( - 10);    
                 }
-                if (key == KeyEvent.VK_W && !entity.isRising() && entity.isGravityUp()) {
+                if (key == KeyEvent.VK_SPACE && !entity.isRising() && entity.isGravityUp()&& !entity.isSpaceship()) {
                     entity.setRising(true);
                     entity.setVelocityY(10);    
                 }
+                if (key == KeyEvent.VK_SPACE && !entity.isGravityUp() && entity.isSpaceship()) {
+                    entity.setRising(true);
+                    entity.setVelocityY(-4);    
+                    entity.setSpaceshipDown(false);
+                }
             }
         }
-
         if (key == KeyEvent.VK_ESCAPE) {
                 System.exit(1);
         }
@@ -32,16 +35,24 @@ public class KeyInput extends KeyAdapter {
                 Game.State = Game.STATE.GAME;
         }
     }
-
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         for (GameObject entity: handler.getObj()) {
-            if (entity.getId() == ObjId.Player && !entity.isRising()) {
-                if (key == KeyEvent.VK_W) entity.setVelocityY(0);
+            if (entity.getId() == ObjId.PLAYER&& !entity.isRising() &&!entity.isSpaceship()) {
+                if (key == KeyEvent.VK_SPACE){
+                	entity.setVelocityY(0);
+                	entity.setRising(false);
+                	entity.setDropping(true);
+                }
+            }
+            if (entity.getId() == ObjId.PLAYER &&entity.isSpaceship()) {
+                if (key == KeyEvent.VK_SPACE){                	
+                	entity.setVelocityY(2);
+                	entity.setRising(false);
+                	entity.setDropping(true);
+                	entity.setSpaceshipDown(true);
+                }
             }
         }
     }
-    
-    
-
 }

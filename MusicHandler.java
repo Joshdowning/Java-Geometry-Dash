@@ -35,8 +35,7 @@ public class MusicHandler implements Runnable{
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-		}
-			
+		}		
 	}
 	
 	@Override

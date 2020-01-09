@@ -3,14 +3,11 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class Block extends GameObject {
-    
-    
-    Texture tex = Game.getTextureInstance();
-    
-    
+
+    private Texture tex = Game.getTextureInstance();
+ 
     public Block(float x, float y, ObjId id) {
         super(x, y, id);
-
     }
 
     public void tick(LinkedList < GameObject > obj) {

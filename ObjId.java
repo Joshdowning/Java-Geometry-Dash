@@ -1,13 +1,15 @@
 
 public enum ObjId
 {
-    Player,
-    Block,
-    Wall,
-    Spike,
-    FlipSpike,
-    JumpPad,
-    FallPad,
-    GravityPortalUp,
-    GravityPortalDown;
+    PLAYER,
+    BLOCK,
+    WALL,
+    SPIKE,
+    FLIPSPIKE,
+    JUMPPAD,
+    FALLPAD,
+    GRAVITYPORTALUP,
+    GRAVITYPORTALDOWN,
+    SPACESHIPPORTAL,
+    REVERTPORTAL;
 }

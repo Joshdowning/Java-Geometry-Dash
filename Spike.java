@@ -17,7 +17,6 @@ public class Spike extends GameObject{
     }
 
     public void render(Graphics g) {
-        Polygon shape = new Polygon(xx,yy,3);        
         g.drawImage(tex.platform[1],(int)x,(int)y,null);
     }
 
