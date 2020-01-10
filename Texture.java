@@ -2,13 +2,16 @@
 import java.awt.image.BufferedImage;
 public class Texture
 {
+   public BufferedImage[]player = new BufferedImage[23];
+   public BufferedImage[]platform  = new BufferedImage[13];
+   public BufferedImage[]explosion  = new BufferedImage[8];
    private BufferedImage blocks_sheet=null;
    private BufferedImage platforms_sheet=null;
+   private BufferedImage explosions_sheet = null;
+   private TextureSheet bsheet; //player block sheet
+   private TextureSheet psheet; //platform sheet
+   private TextureSheet esheet; //explosion sheet
    
-   TextureSheet bsheet;
-   TextureSheet psheet;
-   public BufferedImage[]player = new BufferedImage[20];
-   public BufferedImage[]platform  = new BufferedImage[12];
    
     public Texture()
     {
@@ -16,17 +19,19 @@ public class Texture
         try{
             blocks_sheet = loader.loadImage("/res/block_sheet.png");
             platforms_sheet = loader.loadImage("/res/platform_sheet.png");
+            explosions_sheet = loader.loadImage("/res/explosion_sheet.png");
             
         }catch(Exception e){
             e.printStackTrace();
         }
         bsheet = new TextureSheet(blocks_sheet); //blocks for player
         psheet = new TextureSheet(platforms_sheet); //platform textures
+        esheet = new TextureSheet(explosions_sheet);//explosion death animation
         getTexture();    
     }
     
     private void getTexture(){
-        for(int i=0;i<20;i++){
+        for(int i=0;i<23;i++){
         	
             if(i<7){
             	platform[i] = psheet.grabImage(i+1,1,32,32);
@@ -38,13 +43,28 @@ public class Texture
             }
             else if(i>=10 && i<14)
             	player[i] = bsheet.grabImage(i-6,2,45,45);
-            else
+            else if(i>=14 && i<21)
                 player[i] = bsheet.grabImage(i-13,3,45,45);
-        }
+            else
+            	player[i] = bsheet.grabImage(i-20,4,45,45);
+        }        
         platform[10] = psheet.grabImage(1,2,32,96);
-        platform[11]= psheet.grabImage(1, 2, 32, 32);
+        platform[11]= psheet.grabImage(1, 2, 32, 32); 
+        platform[12]=psheet.grabImage(2,2,32,96);
         
-    
-   
+        explosion[0] = esheet.grabImage(1, 1, 355/2, 370/2);
+        explosion[1] = esheet.grabImage(2, 1, 370/2, 350/2);
+        explosion[2] = esheet.grabImage(1, 2, 375/2, 367/2);
+        explosion[3] = esheet.grabImage(2, 2, 365/2, 345/2);
+        explosion[4] = esheet.grabImage(3, 2, 550/3, 345/2);
+        explosion[5] = esheet.grabImage(1, 3, 370/2, 360/2);
+        explosion[6] = esheet.grabImage(2, 3, 345/2, 340/2);
+        explosion[7] = esheet.grabImage(3, 3, 340/2, 333/2);
+        
+        
+        
+        
+        
+        
     }
 }

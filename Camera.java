@@ -1,23 +1,23 @@
 public class Camera {
 
     private float x, y;
-    private float acceleration;
-
-
+    
     public Camera(float x, float y) {
         this.x = x;
         this.y = y;
-        acceleration = 4;
     }
 
-    public void tick() {
-        x -= acceleration;
+    public void tick(GameObject player) {
+        /*x -= acceleration; //no need for now
         acceleration += 0.002;
         if (acceleration > 5) {
-            acceleration = 5;
-        }
+            acceleration = 5; 
+        }*/
+    	x = -player.getX()+Game.WIDTH/3;
+    	if(!player.isSpaceship())
+    	y = (float) (-player.getY()+Game.HEIGHT/1.5);
     }
-
+    
     public float getX() {
         return x;
     }
@@ -32,9 +32,5 @@ public class Camera {
     
     public void setY(float y){
         this.y = y;
-    }
-    
-    public void setAccel(float acceleration){
-        this.acceleration = acceleration;
     }
 }

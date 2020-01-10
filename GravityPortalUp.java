@@ -4,17 +4,14 @@ import java.awt.Rectangle;
 
 public class GravityPortalUp extends GameObject {
     
-    
-    Texture tex = Game.getTextureInstance();
-    
-    
+    private Texture tex = Game.getTextureInstance();
+       
     public GravityPortalUp(float x, float y, ObjId id) {
         super(x, y, id);
-
     }
 
     public void tick(LinkedList < GameObject > obj) {
-
+    	
     }
 
     public void render(Graphics g) {

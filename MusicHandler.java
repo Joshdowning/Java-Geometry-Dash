@@ -11,16 +11,18 @@ import java.io.File;
 public class MusicHandler implements Runnable{
 	private ArrayList<String>songList;
 	private int songIndex;	
+	private boolean running;
+	
 	public MusicHandler(String... files){
-	songList = new ArrayList<String>();
-	for(String file:files)
-		songList.add("src/res/"+file+".wav");
+		running = true;
+		songList = new ArrayList<String>();
+		for(String file:files)
+			songList.add("src/res/"+file+".wav");
 	}
 	
 		
 	private synchronized void playSong(String fileName){
-		try{
-	
+		try{	
 			File songFile = new File(fileName);
 			AudioInputStream ais = AudioSystem.getAudioInputStream(songFile);
 			AudioFormat format = ais.getFormat();
@@ -32,16 +34,20 @@ public class MusicHandler implements Runnable{
 				this.wait();
 			}catch(InterruptedException e){
 				clip.stop();
+				running = false;
+				return;
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-		}
-			
+		}		
 	}
 	
 	@Override
 	public void run(){
-		playSong(songList.get(songIndex));
+		while(running){
+			playSong(songList.get(songIndex));
+		}
+		System.out.println("thread killed");		
 	}
 		
 }

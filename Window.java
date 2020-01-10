@@ -2,7 +2,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 public class Window {
 
-	Handler handler;
 
 	public Window(int width, int height, String title, Game game) {
 		game.setPreferredSize(new Dimension(width, height));
@@ -16,7 +15,6 @@ public class Window {
 		f.setResizable(false);
 		f.setLocationRelativeTo(null);
 		f.setVisible(true);
-
 		game.start();
 	}
 

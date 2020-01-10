@@ -6,8 +6,7 @@ import java.awt.Rectangle;
 public class JumpPad extends GameObject
 {
     private Animation sparkle;
-    Texture tex = Game.getTextureInstance();
-    
+    private Texture tex = Game.getTextureInstance();
     
     public JumpPad(float x, float y, ObjId id) {
         super(x, y, id);

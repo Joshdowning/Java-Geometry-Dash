@@ -49,20 +49,23 @@ public class Animation
             if(img == imgs[11] ||img == imgs[0]){
                 return false;
             }
-        }
-            
+        }        
         return true;
+    }
+    
+    public boolean finishedExplosion(){
+    	if(currentImage == imgs[7]){
+    		return true;
+    	}
+    	return false;
     }
 
     public void drawAnim(Graphics g,int x, int y ){
         g.drawImage(currentImage,x,y,null);
     }
     
-    public void setLastFrame(BufferedImage img){
-        currentImage = img;
-    }
-      
-    
-    
+    public void setFrame(int i){
+        currentImage = imgs[i];
+    } 
 
 }
