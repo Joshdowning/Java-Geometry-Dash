@@ -44,7 +44,7 @@ public class Animation
        return currentImage;
     }
         
-    public boolean needsRolling(BufferedImage img){
+    public boolean needsRolling(BufferedImage img){ //for when the player cube does not land on an edge
         for(int i =0;i<frames;i++){
             if(img == imgs[11] ||img == imgs[0]){
                 return false;

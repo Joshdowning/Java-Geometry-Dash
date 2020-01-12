@@ -40,9 +40,8 @@ public class Game extends Canvas implements Runnable {
 		background = loader.loadImage("/res/background1.png");
 		loader = new BufferedImageLoader();
 		menuimg = loader.loadImage("/res/Menu.png");
-		
-
 	}
+	
 	public synchronized void start() {
 		if (running)
 			return;
@@ -50,12 +49,14 @@ public class Game extends Canvas implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 	}
+	
 	public void startMusic() {
 		music = new MusicHandler("BackOnTrack");
 		gameMusic = new Thread(music);
 		gameMusic.start();
 		playingMusic = true;
 	}
+	
 	public void pauseMusic() {
 		gameMusic.interrupt();
 		playingMusic = false;
@@ -90,6 +91,7 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 	}
+	
 	private void tick() {
 		if (State == STATE.MENU) {
 			
@@ -116,6 +118,7 @@ public class Game extends Canvas implements Runnable {
 				startMusic();
 		}
 	}
+	
 	private void render() {
 		BufferStrategy bufstrat = this.getBufferStrategy();
 		if (bufstrat == null) {
@@ -144,7 +147,7 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 
-	private void loadImageLevel(BufferedImage image) {
+	private void loadImageLevel(BufferedImage image) { //Generates the level
 		int w = image.getWidth();
 		int h = image.getHeight();
 
@@ -188,6 +191,12 @@ public class Game extends Canvas implements Runnable {
 				}
 				if (red == 180 && green == 255 && blue == 0) { // detect lime
 					handler.addObj(new RevertPortal(i * 32, j * 32, ObjId.REVERTPORTAL));
+				}
+				if (red == 100 && green == 0 && blue == 0) { // detect maroon
+					handler.addObj(new DropCircle(i * 32, j * 32, ObjId.DROPCIRCLE));
+				}
+				if (red == 0 && green == 100 && blue == 100) {
+					handler.addObj(new OffCircle(i * 32, j * 32, ObjId.OFFCIRCLE));
 				}
 			}
 		}

@@ -5,10 +5,13 @@ public class Texture
    public BufferedImage[]player = new BufferedImage[23];
    public BufferedImage[]platform  = new BufferedImage[13];
    public BufferedImage[]explosion  = new BufferedImage[8];
+   public BufferedImage[]circle  = new BufferedImage[12];
    private BufferedImage blocks_sheet=null;
    private BufferedImage platforms_sheet=null;
    private BufferedImage explosions_sheet = null;
+   private BufferedImage circle_sheet = null; 
    private TextureSheet bsheet; //player block sheet
+   private TextureSheet csheet; //circles sheet
    private TextureSheet psheet; //platform sheet
    private TextureSheet esheet; //explosion sheet
    
@@ -20,6 +23,7 @@ public class Texture
             blocks_sheet = loader.loadImage("/res/block_sheet.png");
             platforms_sheet = loader.loadImage("/res/platform_sheet.png");
             explosions_sheet = loader.loadImage("/res/explosion_sheet.png");
+            circle_sheet = loader.loadImage("/res/circle_sheet.png");
             
         }catch(Exception e){
             e.printStackTrace();
@@ -27,6 +31,7 @@ public class Texture
         bsheet = new TextureSheet(blocks_sheet); //blocks for player
         psheet = new TextureSheet(platforms_sheet); //platform textures
         esheet = new TextureSheet(explosions_sheet);//explosion death animation
+        csheet = new TextureSheet(circle_sheet);
         getTexture();    
     }
     
@@ -48,6 +53,8 @@ public class Texture
             else
             	player[i] = bsheet.grabImage(i-20,4,45,45);
         }        
+        //Clean this section up later
+        
         platform[10] = psheet.grabImage(1,2,32,96);
         platform[11]= psheet.grabImage(1, 2, 32, 32); 
         platform[12]=psheet.grabImage(2,2,32,96);
@@ -61,10 +68,18 @@ public class Texture
         explosion[6] = esheet.grabImage(2, 3, 345/2, 340/2);
         explosion[7] = esheet.grabImage(3, 3, 340/2, 333/2);
         
-        
-        
-        
-        
+        circle[0] = csheet.grabImage(1, 1, 105, 105);
+        circle[1] = csheet.grabImage(2, 1, 105, 105);
+        circle[2] = csheet.grabImage(3, 1, 105, 105);
+        circle[3] = csheet.grabImage(4, 1, 105, 105);
+        circle[4] = csheet.grabImage(1, 2, 105, 105);
+        circle[5] = csheet.grabImage(2, 2, 105, 105);
+        circle[6] = csheet.grabImage(3, 2, 106, 106);
+        circle[7] = csheet.grabImage(4, 2, 108, 108);
+        circle[8] = csheet.grabImage(1, 3, 105, 105);
+        circle[9] = csheet.grabImage(2, 3, 105, 105);
+        circle[10] = csheet.grabImage(3, 3, 108, 110);
+        circle[11] = csheet.grabImage(4, 3, 108, 109);   
         
     }
 }

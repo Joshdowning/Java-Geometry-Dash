@@ -26,6 +26,7 @@ public class Player extends GameObject {
 	private boolean spaceship = false;
 	private boolean finishedDeathAnimation= false;
 	private boolean playerIsDead= false;
+	private boolean onDropCircle = false;
 	
 	public Player(float x, float y, ObjId id) {
 		super(x, y, id);
@@ -65,7 +66,7 @@ public class Player extends GameObject {
 		if(playerIsDead){
 			if(!playerExplosion.finishedExplosion()){
 				playerExplosion.runAnimation();
-				playerExplosion.drawAnim(g,(int)x-77,(int)y-66);
+				playerExplosion.drawAnim(g,(int)x-66,(int)y-66);
 			}
 			else{
 				playerExplosion.setFrame(5);
@@ -175,7 +176,7 @@ public class Player extends GameObject {
 			}
 			if (entity.getId() == ObjId.FALLPAD) //FALLPAD COLLISION
 				if(getBoundsTop().intersects(entity.getBounds())||getBoundsRight().intersects(entity.getBounds()) ||getBoundsLeft().intersects(entity.getBounds())){
-					rising = false;
+					rising = true;
 					velocityY = 11;
 				}	
 			if (entity.getId() == ObjId.GRAVITYPORTALUP) //GRAV PORTAL COLLISION
@@ -202,8 +203,27 @@ public class Player extends GameObject {
 					spaceship = false;	
 				}
 			
-			}		
+			if (entity.getId() == ObjId.DROPCIRCLE)
+				if(getBoundsRight().intersects(entity.getBounds())){
+					onDropCircle = true;
+				}
+			if (entity.getId() == ObjId.OFFCIRCLE)
+				if(getBoundsRight().intersects(entity.getBounds())){
+						onDropCircle=false;	
+				}
+			}
 		}
+				
+				
+	
+	
+	public boolean isOnDropCircle(){
+		return onDropCircle;
+	}
+	
+	public void setOnDropCircle(boolean on){
+		onDropCircle = on;
+	}
 	
 	public boolean isSpaceship(){
 		return spaceship;		
@@ -225,7 +245,6 @@ public class Player extends GameObject {
 		playerIsDead = false;
 		x = 300;
 		y = 700;
-		
 		
 		acceleration = 4;
 		dropping = true;

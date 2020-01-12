@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Polygon;
 import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 public abstract class GameObject {
     protected float x,y;
     protected int[]xx,yy;
@@ -109,7 +110,15 @@ public abstract class GameObject {
     	return false;
     }
     
+    public boolean isOnDropCircle(){
+    	return false;
+    }
+    
     public ObjId getId() {
         return id;
+    }
+    
+    public Area getCircleArea(){
+    	return new Area();
     }
 }

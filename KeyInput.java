@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter {
    
 	private Handler handler;
-    
     public KeyInput(Handler handler) {
         this.handler = handler;   
     }
@@ -13,6 +12,15 @@ public class KeyInput extends KeyAdapter {
         int key = e.getKeyCode();
         for (GameObject entity: handler.getObj()) {
             if (entity.getId() == ObjId.PLAYER) {
+            	
+            	
+            	if (key == KeyEvent.VK_SPACE && !entity.isGravityUp() && entity.isOnDropCircle()) {    
+                    entity.setVelocityY(10); 
+                }
+            	if (key == KeyEvent.VK_SPACE && entity.isGravityUp() && entity.isOnDropCircle()) {
+                    entity.setVelocityY(-10);    
+                }
+            	
                 if (key == KeyEvent.VK_SPACE && !entity.isRising() && !entity.isGravityUp() && !entity.isSpaceship()) {
                     entity.setRising(true);
                     entity.setVelocityY( - 10);    
@@ -25,6 +33,8 @@ public class KeyInput extends KeyAdapter {
                     entity.setRising(true);
                     entity.setVelocityY(-11);    
                 }
+                
+                
             }
         }
         if (key == KeyEvent.VK_ESCAPE) {
@@ -52,5 +62,7 @@ public class KeyInput extends KeyAdapter {
                 }
             }
         }
+        
     }
+    
 }
