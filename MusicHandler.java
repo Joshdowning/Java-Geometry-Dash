@@ -34,6 +34,7 @@ public class MusicHandler implements Runnable{
 				this.wait();
 			}catch(InterruptedException e){
 				clip.stop();
+				clip.close();
 				running = false;
 				return;
 			}
